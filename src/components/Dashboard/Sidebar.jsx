@@ -20,11 +20,13 @@ const Sidebar = () => {
         { to: "/dashboard/cart", icon: FiShoppingCart, label: "Cart" },
         { to: "/dashboard/orders", icon: FiPackage, label: "Orders" },
         { to: "/dashboard/users", icon: FiUsers, label: "Users" },
+        { to: "/dashboard/payments", icon: FiPackage, label: "Payments" },
       ]
     : [
         { to: "/dashboard", icon: FiBarChart2, label: "Dashboard" },
         { to: "/dashboard/cart", icon: FiShoppingCart, label: "Cart" },
         { to: "/dashboard/orders", icon: FiPackage, label: "Orders" },
+        { to: "/dashboard/payments", icon: FiPackage, label: "Payments" },
       ];
 
   return (

@@ -14,7 +14,7 @@ const BrandSection = () => {
   ];
 
   return (
-    <section className="px-4 md:px-8 py-16 bg-gray-100">
+    <section className="px-4 md:px-8 py-16 bg-rose-50">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-3">
           Trusted by <span className="text-red-500">70+ Companies</span>

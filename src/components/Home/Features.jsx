@@ -27,7 +27,7 @@ const Features = () => {
   ];
 
   return (
-    <section className="px-4 md:px-8 py-12 bg-gray-50">
+    <section className="px-4 md:px-8 py-12 bg-rose-50">
       <div className="max-w-6xl mx-auto text-center mb-8">
         <h2 className="text-3xl md:text-4xl font-bold">Why Choose YumFood?</h2>
         <p className="text-gray-600 mt-2">

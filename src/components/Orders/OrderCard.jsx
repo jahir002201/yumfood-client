@@ -22,27 +22,28 @@ const OrderCard = ({ order, onCancel }) => {
     }
   };
 
-  const handlePayment = async () => {
-    setLoading(true);
-    try {
-      const res = await authApiClient.post("/payment/initiate/", {
-        amount: order.total_price,
-        orderId: order.id,
-        numItems: order.items?.length || 0,
-      });
+const handlePayment = async () => {
+  setLoading(true);
+  try {
+    const res = await authApiClient.post("/payment/initiate/", {
+      amount: order.total_price,
+      orderId: order.id,
+      numItems: order.items?.length,
+    });
 
-      if (res.data?.payment_url) {
-        window.location.href = res.data.payment_url;
-      } else {
-        alert("Payment failed");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Payment failed");
-    } finally {
-      setLoading(false);
+    if (res.data?.payment_url) {
+      console.log(res.data.payment_url);
+      window.location.href = res.data.payment_url;
+    } else {
+      alert("Payment initiation failed");
     }
-  };
+  } catch (err) {
+    console.error(err);
+    alert("Payment initiation failed");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const getStatusColor = () => {
     switch (status) {

@@ -20,6 +20,7 @@ import Menu from "../pages/Menu";
 import CategoryList from "../pages/CategoryList";
 import FoodList from "../pages/FoodList";
 import Users from "../pages/Users";
+import Payments from "../pages/Payments";
 
 
 const AppRoutes = () => {
@@ -49,6 +50,7 @@ const AppRoutes = () => {
             <Route path="orders" element={<Orders/>} />
             <Route path="category/add" element={<CategoryList />} />
             <Route path="food/add" element={<FoodList />} />
+            <Route path="payments" element={<Payments />} />
             <Route path="users" element={<Users />} />
 
             </Route>

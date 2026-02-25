@@ -32,8 +32,14 @@ const FoodDetail = () => {
   if (loading) return <div className="text-center py-20">Loading...</div>;
   if (!food) return <div className="text-center py-20">Food Not Found...</div>;
 
+  const isSpecial = food?.is_special;
+  const finalPrice = isSpecial && food?.price_with_discount
+    ? food.price_with_discount
+    : food.price;
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto px-4 py-10 ">
+      
       {/* Back link */}
       <div className="mb-6">
         <Link
@@ -56,6 +62,7 @@ const FoodDetail = () => {
         </Suspense>
 
         <div className="flex flex-col">
+          {/* Title */}
           <div className="mb-4">
             <div className="badge badge-outline mb-2 text-teal-600">
               Category: {food.category}
@@ -66,18 +73,37 @@ const FoodDetail = () => {
           </div>
 
           <div className="mt-2 mb-6">
-            <div className="flex items-baseline gap-2">
-              <span className="text-3xl font-bold text-gray-800">${food.price}</span>
-              <span className="text-sm text-gray-500">
-                (${food.price_with_tax} incl. tax)
+            {isSpecial && (
+              <div className="badge badge-error text-white mb-2">
+                {food.discount_percent}% OFF
+              </div>
+            )}
+
+            <div className="flex items-baseline gap-3 flex-wrap">
+              <span className="text-3xl font-bold text-gray-800">
+                ${finalPrice}
               </span>
+
+              {isSpecial && (
+                <span className="text-lg line-through text-gray-400">
+                  ${food.price}
+                </span>
+              )}
+
+              {food?.price_with_tax && (
+                <span className="text-sm text-gray-500">
+                  (${food.price_with_tax} incl. tax)
+                </span>
+              )}
             </div>
           </div>
 
+          {/* Description */}
           <div className="prose prose-sm text-gray-700 mb-6">
             <p>{food.description}</p>
           </div>
 
+          {/* Stock */}
           <div className="mb-6">
             <div className="flex items-center gap-2">
               <span className="text-sm font-medium">Availability:</span>
@@ -99,7 +125,7 @@ const FoodDetail = () => {
         </div>
       </div>
 
-      {/* Reviews section */}
+      {/* Reviews */}
       <div className="mt-12">
         <ReviewSection />
       </div>

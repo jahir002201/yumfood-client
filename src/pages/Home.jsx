@@ -1,4 +1,5 @@
 import Food from "../components/Food/Food";
+import SpecialFoods from "../components/Food/SpecialFoods";
 import AboutSection from "../components/Home/AboutSection";
 import BrandSection from "../components/Home/BrandSection";
 import Category from "../components/Home/Categories/Category";
@@ -14,6 +15,7 @@ const Home = () => {
             <Features />
             <Category />
             <AboutSection />
+            <SpecialFoods />
             <Food />
             <DiscountSection />
             <BrandSection />

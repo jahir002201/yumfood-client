@@ -41,7 +41,7 @@ const Category = () => {
   }
 
   return (
-    <section className="py-12 px-4 max-w-7xl mx-auto bg-gray-50">
+    <section className="py-12 px-4 max-w-7xl mx-auto bg-rose-50">
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-3xl font-bold">Browse Categories</h2>

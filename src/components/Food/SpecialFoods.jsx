@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import FoodItem from "./FoodItem";
+import FoodItem from "../Food/FoodItem";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import ErroAlert from "../ErroAlert";
 import apiClient from "../../services/api-client";
 
-const Food = () => {
+const SpecialFoods = () => {
   const [foods, setFoods] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -15,20 +15,24 @@ const Food = () => {
   useEffect(() => {
     let isMounted = true;
 
-    const fetchFoods = async () => {
+    const fetchSpecialFoods = async () => {
       try {
         if (isMounted) setLoading(true);
-        const res = await apiClient.get("/foods");
-        if (isMounted) setFoods(res.data?.results || []);
+
+        const res = await apiClient.get("/foods/specials/");
+
+        if (isMounted) {
+          setFoods(res.data?.results || res.data || []);
+        }
       } catch (err) {
         console.error(err);
-        if (isMounted) setError("Failed to load foods");
+        if (isMounted) setError("Failed to load special foods");
       } finally {
         if (isMounted) setLoading(false);
       }
     };
 
-    fetchFoods();
+    fetchSpecialFoods();
 
     return () => {
       isMounted = false;
@@ -37,30 +41,37 @@ const Food = () => {
 
   return (
     <section className="mx-auto py-16 bg-rose-50">
+      
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-center px-4 md:px-8 mb-6 gap-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center md:text-left">
-          Trending Foods
+        <h2 className="text-3xl md:text-4xl font-bold text-red-600 text-center md:text-left">
+          🔥 Today’s Specials
         </h2>
+
         <a
-          href="/foods"
-          className="btn btn-secondary px-6 py-3 rounded-full text-lg whitespace-nowrap"
+          href="/foods?is_special=true"
+          className="btn btn-error px-6 py-3 rounded-full text-lg whitespace-nowrap text-white"
         >
-          View All
+          View All Deals
         </a>
       </div>
+
+      {/* Optional Delivery Note */}
+      <p className="text-center text-sm text-gray-500 mb-6">
+        🚚 Fast Delivery in 30–45 minutes
+      </p>
 
       {/* Loading */}
       {isLoading && (
         <div className="flex justify-center py-10">
-          <span className="loading loading-spinner loading-xl text-secondary"></span>
+          <span className="loading loading-spinner loading-xl text-error"></span>
         </div>
       )}
 
       {/* Error */}
       {!isLoading && error && <ErroAlert error={error} />}
 
-      {/* Foods Carousel */}
+      {/* Specials Carousel */}
       {!isLoading && !error && foods.length > 0 && (
         <Swiper
           modules={[Navigation]}
@@ -87,11 +98,11 @@ const Food = () => {
       {/* Empty State */}
       {!isLoading && !error && foods.length === 0 && (
         <p className="text-center text-gray-500 mt-6">
-          No Foods Available
+          No Special Offers Available
         </p>
       )}
     </section>
   );
 };
 
-export default Food;
+export default SpecialFoods;
