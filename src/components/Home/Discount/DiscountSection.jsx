@@ -11,7 +11,7 @@ const DiscountSection = () => {
       style={{ backgroundImage: `url(${bgImg})` }}
     >
       {/* Overlay */}
-      <div className="absolute inset-0 bg-amber-200 z-0"></div>
+      <div className="absolute inset-0 bg-rose-200 z-0"></div>
 
       <div className="relative container mx-auto px-6 z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-10">
