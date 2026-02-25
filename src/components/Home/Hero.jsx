@@ -6,7 +6,7 @@ import hero13 from "../../assets/images/hero-1-3.png";
 
 const Hero = () => {
   return (
-    <section className="relative bg-gray-50 overflow-hidden">
+    <section className="relative bg-rose-50 overflow-hidden">
       {/* Background */}
       <img
         src={heroBg}

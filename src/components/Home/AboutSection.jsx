@@ -19,7 +19,7 @@ const floatVariant = {
 
 const AboutSection = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 md:px-8 lg:py-20 bg-white shadow-2xl overflow-hidden">
+    <section className="py-16 px-4 sm:px-6 md:px-8 lg:py-20 bg-rose-50 shadow-2xl overflow-hidden">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
 
         {/* LEFT SIDE IMAGES */}
