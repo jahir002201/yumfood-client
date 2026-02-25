@@ -41,7 +41,7 @@ const FoodItem = ({ food }) => {
             )}
           </div>
 
-          <p className="line-clamp-3 text-gray-600">{food.description}</p>
+          <p className="line-clamp-3 text-gray-600">{food.description.slice(0,26)}...</p>
 
           <div className="card-actions mt-2 w-full">
             <button className="btn btn-secondary w-full">Buy Now</button>
