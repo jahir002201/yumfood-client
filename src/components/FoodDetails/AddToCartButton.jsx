@@ -15,6 +15,7 @@ const AddToCartButton = ({ food }) => {
   const addToCart = async () => {
     setIsAdding(true);
     try {
+      // Add to cart
       await addCartItems(food.id, Number(quantity));
       setIsAdded(true);
     } catch (error) {
