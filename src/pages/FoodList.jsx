@@ -159,7 +159,7 @@ const FoodList = () => {
             <FoodForm
               key={editingFood ? editingFood.id : "new-food"}
               initialData={
-                editingFood || { name: "", description: "", price: "", stock: "", category: "" }
+                editingFood || { name: "", description: "", price: "", stock: "", category: "", is_special: false, discount_percent: 0, }
               }
               categories={categories || []}
               onSubmit={handleSubmit}

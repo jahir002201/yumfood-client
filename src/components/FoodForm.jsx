@@ -81,6 +81,35 @@ const FoodForm = ({ initialData, categories, onSubmit }) => {
         </select>
         {errors.category && <p className="text-red-500 text-xs">{errors.category.message}</p>}
       </div>
+      {/* Is Special */}
+      <div className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          {...register("is_special")}
+          className="checkbox checkbox-primary"
+        />
+        <label className="text-sm font-medium">Mark as Special</label>
+      </div>
+
+      {/* Discount Percent */}
+      <div>
+        <label className="block text-sm font-medium">Discount Percent (%)</label>
+        <input
+          type="number"
+          {...register("discount_percent", {
+            min: { value: 0, message: "Minimum 0%" },
+            max: { value: 100, message: "Maximum 100%" },
+            valueAsNumber: true,
+          })}
+          className="input input-bordered w-full"
+          placeholder="Discount %"
+        />
+        {errors.discount_percent && (
+          <p className="text-red-500 text-xs">
+            {errors.discount_percent.message}
+          </p>
+        )}
+      </div>
 
       <button type="submit" className="btn btn-primary w-full">
         {initialData.id ? "Update Food" : "Add Food"}
