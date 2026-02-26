@@ -3,6 +3,7 @@ import { FiPackage, FiShoppingCart, FiStar, FiUsers } from "react-icons/fi";
 import StatCard from "../components/Dashboard/StatCard";
 import Order from "../components/Dashboard/Order";
 import authApiClient from "../services/auth-api-client";
+import useAuthContext from "../hooks/useAuthContext";
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -15,9 +16,15 @@ const Dashboard = () => {
     most_liked_foods: [],
   });
   const [loading, setLoading] = useState(true);
+  const { user } = useAuthContext();
 
   useEffect(() => {
     const fetchStats = async () => {
+      if (!user?.is_staff) {
+        setLoading(false);
+        return;
+      }
+
       try {
         const res = await authApiClient.get("/dashboard/stats/");
         setStats(res.data);
@@ -29,10 +36,15 @@ const Dashboard = () => {
     };
 
     fetchStats();
-  }, []);
+  }, [user]);
 
   if (loading) return <div>Loading dashboard...</div>;
-
+  if (!user?.is_staff) return (
+    <div className="space-y-6">
+      <h3 className="text-lg font-semibold mb-4">Your Orders</h3>
+      <Order />
+    </div>
+  );
   return (
     <div className="space-y-6">
       {/* Top Stats */}
