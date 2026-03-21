@@ -1,6 +1,9 @@
 import { FaAngleRight } from "react-icons/fa6";
+import { Link } from "react-router";
+
 
 const CategoryItems = ({ index, category }) => {
+
   const gradients = [
     "from-pink-100 to-blue-100",
     "from-blue-100 to-purple-100",
@@ -37,7 +40,7 @@ const CategoryItems = ({ index, category }) => {
         <p className="text-gray-600 text-sm mb-4 grow">{description}</p>
 
         <button className="text-pink-500 font-bold hover:text-pink-600 transition-colors flex items-center gap-1">
-          Explore <FaAngleRight />
+          <Link to={`/menu?category=${category.id}`}> Explore <FaAngleRight /> </Link> 
         </button>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Link } from "react-router";
 
 const Category = () => {
   const [categories, setCategories] = useState([]);
@@ -45,12 +46,12 @@ const Category = () => {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-3xl font-bold">Browse Categories</h2>
-        <a
-          href="#"
+        <Link
           className="btn btn-secondary px-6 py-3 rounded-full text-lg"
+          to="/menu"
         >
           View All
-        </a>
+        </Link>
       </div>
 
       {/* Swiper Carousel */}

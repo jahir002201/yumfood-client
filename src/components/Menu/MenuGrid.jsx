@@ -1,11 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetchFoods from "../../hooks/useFetchFoods";
 import useFetchCategories from "../../hooks/useFetchCategories";
 import MenuItem from "./MenuItem";
 import Pagination from "./Pagination";
+import { useSearchParams } from "react-router";
 
 const MenuGrid = () => {
-  const [activeCategory, setActiveCategory] = useState("");
+  const [searchParams] = useSearchParams();
+  const categoryFromUrl = searchParams.get("category") || "";
+  const [activeCategory, setActiveCategory] = useState(categoryFromUrl);
+
+  useEffect(() => {
+    setActiveCategory(categoryFromUrl);
+  }, [categoryFromUrl]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [priceRange] = useState([0, 1000]);
   const [searchQuery] = useState("");
