@@ -42,13 +42,7 @@ YumFood is a full-stack food ordering platform built with **React.js**, **Django
 ## 🔗 Project Links
 
 **Frontend:**
-[Live Demo](YOUR_FRONTEND_URL)
-
-**Backend API:**
-[Live API](YOUR_BACKEND_URL)
-
-**Backend Repository:**
-[GitHub Repository](YOUR_BACKEND_REPOSITORY_URL)
+[Live Demo](https://yumfood-client.vercel.app/)
 
 ## 🏗️ Architecture
 
